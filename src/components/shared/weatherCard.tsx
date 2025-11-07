@@ -27,7 +27,6 @@ const weatherCard: React.FC<weatherCardProps> = ({ city, forecast }) => {
         flexDirection: "row",
       })}
     >
-      {/* left */}
       <Box sx={{ marginLeft: "10px" }}>
         <Stack direction="row" spacing={2} alignItems="center" sx={{ display: "flex", flexDirection: "column" }}>
           <Chip
@@ -86,7 +85,6 @@ const weatherCard: React.FC<weatherCardProps> = ({ city, forecast }) => {
         </Stack>
       </Box>
 
-      {/* right */}
       <Stack sx={{ marginRight: i18n.language === "fa" ? "0px" : "30px", marginLeft: i18n.language === "fa" ? "30px" : "0px" }}>
         <Box sx={{ width: 120 }}>
           <img src={iconUrl("current")} />

@@ -26,11 +26,7 @@ export default function Login() {
         e.preventDefault()
         
         if (Username.trim()) {
-            // Save to localStorage
             localStorage.setItem('username', Username.trim())
-            // localStorage.setItem('language', t.toString())
-            
-            // Redirect to dashboard
             navigate('/dashboard')
         } else {
             alert('Please enter your name')

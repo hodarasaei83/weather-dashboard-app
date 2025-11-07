@@ -20,10 +20,6 @@ const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
 };
 
-// const handleLogout = () => {
-//     localStorage.removeItem('username');
-//     navigate('/');
-// };
     return (
         <>
             <AppBar position="static" sx={{minWidth:'480px', bgcolor:'#F3FAFE', color:'text.primary', boxShadow:'0px 4px 10px rgba(0, 0, 0, 0.15)'}}>
@@ -48,9 +44,6 @@ const handleChange = (event: SelectChangeEvent) => {
                                     ))}
                                 </Select>
                             </FormControl>
-                            {/* <Box sx={{border:'1px solid #BBC1C4',borderRadius:'16px', height:'40px', width:'40px', display:'flex', justifyContent:'center', alignItems:'center'}}>
-                                <SettingsOutlinedIcon sx={{width:'24x', height:'24px', color:'#BBC1C4'}} onClick={handleLogout}/>
-                            </Box> */}
                             <SettingCard  mode={mode} setMode={setMode} onExit={() => navigate("/")} />
                         </Box>
                     </Grid>

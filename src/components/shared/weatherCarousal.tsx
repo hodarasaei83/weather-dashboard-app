@@ -43,8 +43,8 @@ const weatherCarousel: React.FC<Props> = ({ days }) => {
         gap: 2,
         overflowX: "auto",
         pb: 1,
-        scrollbarWidth: "none", // Firefox
-        "&::-webkit-scrollbar": { display: "none" }, // Chrome/Safari
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": { display: "none" },
         cursor: isDragging ? "grabbing" : "grab",
         flexWrap: "nowrap",
         width: "100%",

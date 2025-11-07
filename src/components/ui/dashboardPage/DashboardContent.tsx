@@ -76,10 +76,8 @@ export type DashboardContentProps = {
                       <stop offset="100%" stopColor="#9c27b0" stopOpacity={0.99} /> {/* purple */}
                     </linearGradient>
                   </defs>
-                  {/* خطوط افقی خط‌چین */}
                   <CartesianGrid vertical={false} horizontal stroke={mode === "dark" ? "#444" : "#ccc"} strokeDasharray="3 3" />
 
-                  {/* محور افقی فقط نوشته ماه */}
                   <XAxis
                     dataKey="date"
                     axisLine={false}
@@ -87,7 +85,6 @@ export type DashboardContentProps = {
                     tick={{ fontSize: 12, fill: mode === "dark" ? "#fff" : "#000" }}
                   />
 
-                  {/* محور عمودی بدون خط، با علامت درجه */}
                   <YAxis
                     axisLine={false}
                     tickLine={false}
@@ -104,22 +101,17 @@ export type DashboardContentProps = {
                     }}
                   />
 
-                  {/* Area برای رنگ زیر خط */}
                   <Area
                     type="linear"
                     dataKey="temp"
-                    // stroke={mode === "dark" ? "#00bcd4" : "#1976d2"}
-                    // fill={mode === "dark" ? "#00bcd4" : "#1976d2"}
 
                     fill="url(#colorTemp)"
                     fillOpacity={0.1}
                   />
 
-                  {/* خط روی Area */}
                   <Line
                     type="linear"
                     dataKey="temp"
-                    // stroke={mode === "dark" ? "#00bcd4" : "#1976d2"}
                     stroke="url(#colorTemp)"
                     strokeWidth={2}
                     dot={false}
