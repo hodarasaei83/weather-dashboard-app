@@ -1,32 +1,15 @@
-// Dashboard.tsx
-import { Typography, Box, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Navbar from "../../shared/Navbar";
+import Footer from "../../shared/Footer";
+import DashboardContent from "./DashboardContent";
 
 export default function Dashboard() {
-    const navigate = useNavigate();
-    const username = localStorage.getItem('username');
-
-    const handleLogout = () => {
-        localStorage.removeItem('username');
-        navigate('/');
-    };
-
+    const [mode, setMode] = useState<"light" | "dark">("light");
     return (
-        <Box sx={{ p: 4 }}>
-            <Typography variant="h3" gutterBottom>
-                Welcome to Dashboard, {username}!
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-                This is your dashboard page.
-            </Typography>
-            <Button 
-                variant="contained" 
-                color="secondary" 
-                onClick={handleLogout}
-                sx={{ mt: 2 }}
-            >
-                Logout
-            </Button>
-        </Box>
+    <>
+        <Navbar mode={mode} setMode={setMode} />
+        <DashboardContent mode={mode} setMode={setMode} />
+        <Footer />
+    </>
     );
 }

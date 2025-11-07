@@ -1,6 +1,8 @@
-import { Box, Button, Container, FormControl, Grid, InputLabel, NativeSelect, Select, TextField, Typography } from "@mui/material"
+import { Box, Button, Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import { useState, type FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
+import { useUsername } from "../../../services/context/UsernameContext"
+import { useTranslation } from "react-i18next"
 
 const boxStyle = {
     position: 'absolute',
@@ -14,18 +16,19 @@ const boxStyle = {
 }
 
 export default function Login() {
-    const [username, setUsername] = useState<string>('')
-    const [language, setLanguage] = useState<number>(30)
+    const {Username, setUsername} = useUsername()
+    const { t, i18n } = useTranslation();
+
 
     const navigate = useNavigate()
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
         
-        if (username.trim()) {
+        if (Username.trim()) {
             // Save to localStorage
-            localStorage.setItem('username', username.trim())
-            localStorage.setItem('language', language.toString())
+            localStorage.setItem('username', Username.trim())
+            // localStorage.setItem('language', t.toString())
             
             // Redirect to dashboard
             navigate('/dashboard')
@@ -62,7 +65,7 @@ export default function Login() {
                             <TextField 
                                 label='Enter Your Name' 
                                 fullWidth 
-                                value={username} 
+                                value={Username} 
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                             />
                         </Box>
@@ -107,22 +110,19 @@ export default function Login() {
     zIndex: 1000,
   }}
 >
-  <FormControl fullWidth>
-    <InputLabel variant="standard" htmlFor="language-select">
-      Language
-    </InputLabel>
-    <NativeSelect
-      value={language}
-      onChange={(e) => setLanguage(Number(e.target.value))}
-      inputProps={{
-        name: 'language',
-        id: 'language-select',
-      }}
-    >
-      <option value={1}>English</option>
-      <option value={0}>Persian</option>
-    </NativeSelect>
-  </FormControl>
+<FormControl fullWidth variant="standard" sx={{ direction: i18n.language === "fa" ? "rtl" : "ltr" , mb:1}}>
+          <InputLabel id="lang-label" sx={{ color: "#000000", position: "inherit",mb:-2 }}>
+            {t("language")}
+          </InputLabel>
+          <Select
+            labelId="lang-label"
+            value={i18n.language}
+            onChange={(e) => i18n.changeLanguage(e.target.value)}
+          >
+            <MenuItem value="en">English</MenuItem>
+            <MenuItem value="fa">فارسی</MenuItem>
+          </Select>
+        </FormControl>
 </Box>
                 
         </>
