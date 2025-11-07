@@ -11,7 +11,7 @@ export type DashboardContentProps = {
     setMode: (m: "light" | "dark") => void;
   };
   
-  const DashboardContent: React.FC<DashboardContentProps> = ({ mode, setMode }) => {
+  const DashboardContent: React.FC<DashboardContentProps> = ({ mode }) => {
     const { t } = useTranslation();
     const [city, setCity] = useState("Tehran");
     const [loading, setLoading] = useState(false);
